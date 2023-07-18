@@ -29,8 +29,8 @@ workflow bwamem2 {
     }
 
     Map[String,String] bwamem2Ref_by_genome = { 
-    "hg19": "$HG19_BWAMEM2_INDEX_ROOT/hg19.fa",
-    "hg38": "$HG38_BWAMEM2_INDEX_WITH_ALT_ROOT/hg38.fa"
+    "hg19": "$HG19_BWAMEM2_INDEX_ROOT/hg19_index",
+    "hg38": "$HG38_BWAMEM2_INDEX_WITH_ALT_ROOT/hg38_random.fa"
     }
 
 
