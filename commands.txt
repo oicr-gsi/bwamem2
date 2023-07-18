@@ -79,3 +79,4 @@ Merging of parallelized Adapter trimming logs
 ```
        COMMANDS NOT SHOWN, see WDL for details
 ```
+

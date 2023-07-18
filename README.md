@@ -179,7 +179,9 @@ Output | Type | Description
  
  ```
         COMMANDS NOT SHOWN, see WDL for details
- ``` ## Support
+ ```
+ 
+ ## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
