@@ -112,6 +112,7 @@ Output | Type | Description
          fi
          
          python3 -c "from math import ceil; print (int(ceil(($totalLines/4.0)/~{numChunk})*4))"
+ 	slicer -i ~{fastqR} -l ~{chunkSize} --gzip
  
  ```
  
@@ -180,7 +181,6 @@ Output | Type | Description
  ```
         COMMANDS NOT SHOWN, see WDL for details
  ```
- 
  ## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .

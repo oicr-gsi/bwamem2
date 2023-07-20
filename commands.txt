@@ -11,6 +11,7 @@ Split the fastq files into chunks to parallelize the alignment (optional).  If r
         fi
         
         python3 -c "from math import ceil; print (int(ceil(($totalLines/4.0)/~{numChunk})*4))"
+	slicer -i ~{fastqR} -l ~{chunkSize} --gzip
 
 ```
 
@@ -79,4 +80,3 @@ Merging of parallelized Adapter trimming logs
 ```
        COMMANDS NOT SHOWN, see WDL for details
 ```
-
