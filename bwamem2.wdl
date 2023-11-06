@@ -445,7 +445,7 @@ task runBwamem2 {
     command <<<
         set -euo pipefail
         mkdir -p ~{tmpDir}
-        bwa-mem2 mem \
+        bwa-mem2 mem -M \
             -t ~{threads} ~{addParam}  \
             -R  ~{readGroups} \
             ~{bwa2Ref} \

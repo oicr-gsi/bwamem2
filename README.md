@@ -149,7 +149,7 @@ Output | Type | Description
  
  ```
          mkdir -p ~{tmpDir}
-         bwa-mem2 mem \
+         bwa-mem2 mem -M \
              -t ~{threads} ~{addParam}  \
              -R  ~{readGroups} \
              ~{bwa2Ref} \
