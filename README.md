@@ -91,63 +91,66 @@ Parameter|Value|Default|Description
 
 ### Outputs
 
-Output | Type | Description
----|---|---
-`bwamem2Bam`|File|output merged bam aligned to genome
-`bwamem2Index`|File|output index file for bam aligned to genome
-`log`|File?|a summary log file for adapter trimming
-`cutAdaptAllLogs`|File?|a file containing all logs for adapter trimming for each fastq chunk
+Output | Type | Description | Labels
+---|---|---|---
+`bwamem2Bam`|File|output merged bam aligned to genome|
+`bwamem2Index`|File|output index file for bam aligned to genome|
+`log`|File?|a summary log file for adapter trimming|
+`cutAdaptAllLogs`|File?|a file containing all logs for adapter trimming for each fastq chunk|
 
 
 ## Commands
- This section lists command(s) run by bwamem2 workflow
+This section lists command(s) run by bwamem2 workflow
  
  
- Split the fastq files into chunks to parallelize the alignment (optional).  If requested, subsequent steps will be run on each fastq chunk
- ```
+###vSplit the fastq files into chunks to parallelize the alignment (optional).
+
+If requested, subsequent steps will be run on each fastq chunk
+
+```
  
-         if [ -z "~{numReads}" ]; then
-             totalLines=$(zcat ~{fastqR1} | wc -l)
-         else totalLines=$((~{numReads}*4))
-         fi
-         
-         python3 -c "from math import ceil; print (int(ceil(($totalLines/4.0)/~{numChunk})*4))"
- 	slicer -i ~{fastqR} -l ~{chunkSize} --gzip
+	if [ -z "~{numReads}" ]; then
+	    totalLines=$(zcat ~{fastqR1} | wc -l)
+	else totalLines=$((~{numReads}*4))
+	fi
+	 
+	python3 -c "from math import ceil; print (int(ceil(($totalLines/4.0)/~{numChunk})*4))"
+	slicer -i ~{fastqR} -l ~{chunkSize} --gzip
+
+```
  
- ```
+### Trim off the UMI bases (optional)
  
- Trim off the UMI bases (optional)
+```
+     barcodex-rs --umilist ~{umiList} --prefix ~{outputPrefix} --separator "__" inline \
+     --pattern1 '~{pattern1}' --r1-in ~{fastq1} \
+     ~{if (defined(fastq2)) then "--pattern2 '~{pattern2}' --r2-in ~{fastq2} " else ""}
+
+     cat ~{outputPrefix}_UMI_counts.json > umiCounts.txt
+
+     tr [,] ',\n' < umiCounts.txt | sed 's/[{}]//' > tmp.txt
+     echo "{$(sort -i tmp.txt)}" > new.txt
+     tr '\n' ',' < new.txt | sed 's/,$//' > ~{outputPrefix}_UMI_counts.json
+```
  
- ```
-             barcodex-rs --umilist ~{umiList} --prefix ~{outputPrefix} --separator "__" inline \
-             --pattern1 '~{pattern1}' --r1-in ~{fastq1} \
-             ~{if (defined(fastq2)) then "--pattern2 '~{pattern2}' --r2-in ~{fastq2} " else ""}
+### Trim off adapter sequence (optional)
  
-             cat ~{outputPrefix}_UMI_counts.json > umiCounts.txt
+```
+ cutadapt -q ~{trimMinQuality} \
+	 -m ~{trimMinLength} \
+	 -a ~{adapter1} \
+	 -o ~{resultFastqR1} \
+	 ~{if (defined(fastqR2)) then "-A ~{adapter2} -p ~{resultFastqR2} " else ""} \
+	 ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
+	 ~{addParam} \
+	 ~{fastqR1} \
+	 ~{fastqR2} > ~{resultLog}
+
+```
  
-             tr [,] ',\n' < umiCounts.txt | sed 's/[{}]//' > tmp.txt
-             echo "{$(sort -i tmp.txt)}" > new.txt
-             tr '\n' ',' < new.txt | sed 's/,$//' > ~{outputPrefix}_UMI_counts.json
- ```
+### Align to reference with bwa mem
  
- Trim off adapter sequence (optional)
- 
- ```
-         cutadapt -q ~{trimMinQuality} \
-                 -m ~{trimMinLength} \
-                 -a ~{adapter1} \
-                 -o ~{resultFastqR1} \
-                 ~{if (defined(fastqR2)) then "-A ~{adapter2} -p ~{resultFastqR2} " else ""} \
-                 ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
-                 ~{addParam} \
-                 ~{fastqR1} \
-                 ~{fastqR2} > ~{resultLog}
- 
- ```
- 
- Align to reference with bwa mem
- 
- ```
+```
          mkdir -p ~{tmpDir}
          bwa-mem2 mem -M \
              -t ~{threads} ~{addParam}  \
@@ -157,31 +160,32 @@ Output | Type | Description
              ~{read2s} \
          | \
          samtools sort -O bam -T ~{tmpDir} -o ~{resultBam} - 
- ```
+```
  
  
- Merge parallelized alignments (optional, if the fastq had been split)
+### Merge parallelized alignments (optional, if the fastq had been split)
  
- ```
+```
          samtools merge \
          -c \
          ~{resultMergedBam} \
          ~{sep=" " bams} 
- ```
+```
  
  
- Index the bam file
+### Index the bam file
  
- ```
+```
          samtools index ~{inputBam} ~{resultBai}
- ```
+```
  
- Merging of parallelized Adapter trimming logs
+### Merging of parallelized Adapter trimming logs
  
- ```
+```
         COMMANDS NOT SHOWN, see WDL for details
- ```
- ## Support
+```
+
+## Support
 
 For support, please file an issue on the [Github project](https://github.com/oicr-gsi) or send an email to gsi@oicr.on.ca .
 
