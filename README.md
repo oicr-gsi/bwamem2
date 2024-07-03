@@ -93,17 +93,17 @@ Parameter|Value|Default|Description
 
 Output | Type | Description | Labels
 ---|---|---|---
-`bwamem2Bam`|File|output merged bam aligned to genome|
-`bwamem2Index`|File|output index file for bam aligned to genome|
-`log`|File?|a summary log file for adapter trimming|
-`cutAdaptAllLogs`|File?|a file containing all logs for adapter trimming for each fastq chunk|
+`bwamem2Bam`|File|Output Alignment BAM file|vidarr_label: bwamem2Bam
+`bwamem2Index`|File|Index of the Output Alignment file, BAI|vidarr_label: bwamem2Index
+`log`|File?|Optional log file|vidarr_label: log
+`cutAdaptAllLogs`|File?|Optional log file for cutAdapt|vidarr_label: cutAdaptAllLogs
 
 
 ## Commands
 This section lists command(s) run by bwamem2 workflow
  
  
-###vSplit the fastq files into chunks to parallelize the alignment (optional).
+### Split the fastq files into chunks to parallelize the alignment (optional).
 
 If requested, subsequent steps will be run on each fastq chunk
 

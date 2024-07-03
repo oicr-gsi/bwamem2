@@ -170,6 +170,24 @@ workflow bwamem2 {
           url: "https://gitlab.oicr.on.ca/ResearchIT/modulator"
         }
       ]
+      output_meta: {
+       bwamem2Bam: {
+          description: "Output Alignment BAM file",
+          vidarr_label: "bwamem2Bam"
+       },
+       bwamem2Index: {
+          description: "Index of the Output Alignment file, BAI",
+          vidarr_label: "bwamem2Index"
+       },
+       log: {
+          description: "Optional log file",
+          vidarr_label: "log"
+       },
+       cutAdaptAllLogs: {
+          description: "Optional log file for cutAdapt",
+          vidarr_label: "cutAdaptAllLogs"
+       } 
+      }
     }
 
     output {
@@ -223,11 +241,8 @@ task countChunkSize{
 
     meta {
     output_meta: {
-    chunkSize: {
-        description: "output number of lines per chunk",
-        vidarr_label: "chunkSize"
+    chunkSize: "output number of lines per chunk"
     }
-}
     }    
    
 }
