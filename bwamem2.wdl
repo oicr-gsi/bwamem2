@@ -25,12 +25,14 @@ workflow bwamem2 {
 
     Map[String,String] bwamem2_modules_by_genome = { 
     "hg19": "samtools/1.9 bwa-mem2/2.2.1 hg19-bwamem2-index-noalt/2.2.1",
-    "hg38": "samtools/1.9 bwa-mem2/2.2.1 hg38-bwamem2-index-noalt/2.2.1"
+    "hg38": "samtools/1.9 bwa-mem2/2.2.1 hg38-bwamem2-index-noalt/2.2.1",
+    "grch38": "samtools/1.9 bwa-mem2/2.2.1 grch38-bwamem2-index/2.2.1", 
     }
 
     Map[String,String] bwamem2Ref_by_genome = { 
     "hg19": "$HG19_BWAMEM2_INDEX_NOALT_ROOT/hg19_noAlt.fa",
-    "hg38": "$HG38_BWAMEM2_INDEX_NOALT_ROOT/hg38_noAlt.fa"
+    "hg38": "$HG38_BWAMEM2_INDEX_NOALT_ROOT/hg38_noAlt.fa",
+    "grch38": "$GRCH38_BWAMEM2_INDEX_ROOT/grch38_noAlt.fna", 
     }
 
 
