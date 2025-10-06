@@ -1342,5 +1342,129 @@
                 "type": "script"
             }
         ]
-    }
+    },
+    "arguments": {
+            "bwamem2.adapterTrimming.adapter1": null,
+            "bwamem2.adapterTrimming.adapter2": null,
+            "bwamem2.adapterTrimming.addParam": null,
+            "bwamem2.adapterTrimming.doUMItrim": null,
+            "bwamem2.adapterTrimming.jobMemory": null,
+            "bwamem2.adapterTrimming.adapterTrim": true,
+            "bwamem2.adapterTrimming.polyGTrim": 0,
+            "bwamem2.adapterTrimming.modules": null,
+            "bwamem2.adapterTrimming.timeout": null,
+            "bwamem2.adapterTrimming.trimMinLength": null,
+            "bwamem2.adapterTrimming.trimMinQuality": null,
+            "bwamem2.adapterTrimmingLog.jobMemory": null,
+            "bwamem2.adapterTrimmingLog.timeout": null,
+            "bwamem2.adapterTrimming.umiLength": null,
+            "bwamem2.bamMerge.jobMemory": null,
+            "bwamem2.bamMerge.modules": null,
+            "bwamem2.bamMerge.timeout": null,
+            "bwamem2.countChunkSize.modules": null,
+            "bwamem2.countChunkSize.jobMemory": null,
+            "bwamem2.countChunkSize.timeout": null,
+            "bwamem2.doTrim": trim,
+            "bwamem2.doUMIextract": true,
+            "bwamem2.extractUMIs.jobMemory": null,
+            "bwamem2.extractUMIs.modules": null,
+            "bwamem2.extractUMIs.outputPrefix": null,
+            "bwamem2.extractUMIs.pattern1": null,
+            "bwamem2.extractUMIs.pattern2": null,
+            "bwamem2.extractUMIs.timeout": null,
+            "bwamem2.extractUMIs.umiList": null,
+            "bwamem2.fastqR1": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/bwamem2/test_inputs/r1.fastq.gz",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "bwamem2.fastqR2": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsi/testdata/bwamem2/test_inputs/r2.fastq.gz",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "bwamem2.indexBam.jobMemory": null,
+            "bwamem2.indexBam.modules": null,
+            "bwamem2.indexBam.timeout": null,
+            "bwamem2.numChunk": null,
+            "bwamem2.numReads": null,
+            "bwamem2.outputFileNamePrefix": "nest_seq_trim",
+            "bwamem2.reference": "hg19",
+            "bwamem2.runBwamem2.addParam": null,
+            "bwamem2.runBwamem2.bwaRef": null,
+            "bwamem2.runBwamem2.jobMemory": null,
+            "bwamem2.runBwamem2.modules": null,
+            "bwamem2.runBwamem2.readGroups": "'@RG\\tID:1\\tLB:trimming_polyG_regions\\tPL:illumina\\tPU:run_barcode\\tSM:trimming_polyF_regions'",
+            "bwamem2.runBwamem2.threads": null,
+            "bwamem2.runBwamem2.timeout": null,
+            "bwamem2.slicerR1.jobMemory": null,
+            "bwamem2.slicerR1.modules": null,
+            "bwamem2.slicerR1.timeout": null,
+            "bwamem2.slicerR2.jobMemory": null,
+            "bwamem2.slicerR2.modules": null,
+            "bwamem2.slicerR2.timeout": null
+        },
+        "description": "Runs the adapter trimming and nextseq-trim",
+        "engineArguments": {
+            "write_to_cache": false,
+            "read_from_cache": false
+        },
+        "id": "run_polyGTrim",
+        "metadata": {
+            "bwamem2.bwamem2Bam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_bwamem2_polyGTrimming_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "bwamem2.bwamem2Index": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_bwamem2_polyGTrimming_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "bwamem2.cutAdaptAllLogs": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_bwamem2_polyGTrimming_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "bwamem2.log": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_bwamem2_polyGTrimming_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
+                "metrics_compare": "@CHECKOUT@/tests/compare.sh",
+                "output_metrics": "/.mounts/labs/gsiprojects/gsi/gsiusers/aforbes/bwaMem_clone/bwamem2/bwamem2/OUTPUT/polyG_test.metrics",
+                "type": "script"
+            }
+        ]
+    } 
 ]
