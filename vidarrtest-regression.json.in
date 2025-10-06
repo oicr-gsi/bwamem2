@@ -565,7 +565,7 @@
             "bwamem2.runBwamem2.bwaRef": null,
             "bwamem2.runBwamem2.jobMemory": null,
             "bwamem2.runBwamem2.modules": null,
-            "bwamem2.runBwamem2.readGroups": "'@RG\\tID:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tLB:Test\\tPL:ILLUMINA\\tPU:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tSM:Test'",
+            "bwamem2.runBwamem2.readGroups": "'@RG\\tID:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tLB:PCSI0022C\\tPL:ILLUMINA\\tPU:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tSM:PCSI0022C'",
             "bwamem2.runBwamem2.threads": null,
             "bwamem2.runBwamem2.timeout": null,
             "bwamem2.slicerR1.jobMemory": null,
@@ -619,7 +619,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.1/output_metrics/workflow_test_05.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.1/output_metrics/PCSI0022C_trim_split_hg38_bam.metrics",
                 "type": "script"
             }
         ]
@@ -1159,7 +1159,7 @@
             "bwamem2.runBwamem2.bwaRef": null,
             "bwamem2.runBwamem2.jobMemory": null,
             "bwamem2.runBwamem2.modules": null,
-            "bwamem2.runBwamem2.readGroups": "'@RG\\tID:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tLB:Test\\tPL:ILLUMINA\\tPU:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tSM:Test'",
+            "bwamem2.runBwamem2.readGroups": "'@RG\\tID:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tLB:PCSI0022C\\tPL:ILLUMINA\\tPU:121005_h804_0096_AD0V4NACXX-NoIndex_6\\tSM:PCSI0022C'",
             "bwamem2.runBwamem2.threads": null,
             "bwamem2.runBwamem2.timeout": null,
             "bwamem2.slicerR1.jobMemory": null,
@@ -1213,7 +1213,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.1/output_metrics/workflow_test_10.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.1/output_metrics/PCSI0022C_trim_split_hg38_numRead_bam.metrics",
                 "type": "script"
             }
         ]
