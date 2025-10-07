@@ -1343,7 +1343,8 @@
             }
         ]
     },
-    "arguments": {
+    {
+        "arguments": {
             "bwamem2.adapterTrimming.adapter1": null,
             "bwamem2.adapterTrimming.adapter2": null,
             "bwamem2.adapterTrimming.addParam": null,
@@ -1466,5 +1467,5 @@
                 "type": "script"
             }
         ]
-    } 
+    }
 ]
