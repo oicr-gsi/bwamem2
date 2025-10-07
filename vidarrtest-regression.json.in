@@ -1403,7 +1403,7 @@
             "bwamem2.indexBam.timeout": null,
             "bwamem2.numChunk": null,
             "bwamem2.numReads": null,
-            "bwamem2.outputFileNamePrefix": "nest_seq_trim",
+            "bwamem2.outputFileNamePrefix": "polyG_trim_out",
             "bwamem2.reference": "hg19",
             "bwamem2.runBwamem2.addParam": null,
             "bwamem2.runBwamem2.bwaRef": null,
