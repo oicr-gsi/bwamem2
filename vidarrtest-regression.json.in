@@ -119,7 +119,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_01.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_01.metrics",
                 "type": "script"
             }
         ]
@@ -244,7 +244,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_02.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_02.metrics",
                 "type": "script"
             }
         ]
@@ -369,7 +369,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_03.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_03.metrics",
                 "type": "script"
             }
         ]
@@ -494,7 +494,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_04.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_04.metrics",
                 "type": "script"
             }
         ]
@@ -619,7 +619,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/PCSI0022C_trim_split_hg38_bam.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/PCSI0022C_trim_split_hg38_bam.metrics",
                 "type": "script"
             }
         ]
@@ -733,7 +733,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_06.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_06.metrics",
                 "type": "script"
             }
         ]
@@ -847,7 +847,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_07.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_07.metrics",
                 "type": "script"
             }
         ]
@@ -961,7 +961,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_08.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_08.metrics",
                 "type": "script"
             }
         ]
@@ -1088,7 +1088,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_09.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_09.metrics",
                 "type": "script"
             }
         ]
@@ -1213,7 +1213,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/PCSI0022C_trim_split_hg38_numRead_bam.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/PCSI0022C_trim_split_hg38_numRead_bam.metrics",
                 "type": "script"
             }
         ]
@@ -1338,7 +1338,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/workflow_test_11.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/workflow_test_11.metrics",
                 "type": "script"
             }
         ]
@@ -1463,7 +1463,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.3/output_metrics/polyG_test.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.0.5/output_metrics/polyG_test.metrics",
                 "type": "script"
             }
         ]
