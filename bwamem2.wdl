@@ -24,13 +24,13 @@ workflow bwamem2 {
     }
 
     Map[String,String] bwamem2_modules_by_genome = { 
-    "hg19": "samtools/1.9 bwa-mem2/2.2.1 hg19-bwamem2-index/2.2.1",
-    "hg38": "samtools/1.9 bwa-mem2/2.2.1 hg38-bwamem2-index-with-alt/2.2.1"
+    "hg19": "samtools/1.9 bwa-mem2/2.2.1 hg19-bwamem2-index-noalt/2.2.1",
+    "hg38": "samtools/1.9 bwa-mem2/2.2.1 hg38-bwamem2-index-noalt/2.2.1"
     }
 
     Map[String,String] bwamem2Ref_by_genome = { 
-    "hg19": "$HG19_BWAMEM2_INDEX_ROOT/hg19_index",
-    "hg38": "$HG38_BWAMEM2_INDEX_WITH_ALT_ROOT/hg38_random.fa"
+    "hg19": "$HG19_BWAMEM2_INDEX_NOALT_ROOT/hg19_noAlt.fa",
+    "hg38": "$HG38_BWAMEM2_INDEX_NOALT_ROOT/hg38_noAlt.fa",
     }
 
 
@@ -138,8 +138,8 @@ workflow bwamem2 {
             url: "https://github.com/samtools/samtools/archive/0.1.19.tar.gz"
         },
         {
-            name: "cutadapt/1.8.3",
-            url: "https://cutadapt.readthedocs.io/en/v1.8.3/"
+            name: "cutadapt/2.1",
+            url: "https://cutadapt.readthedocs.io/en/v2.1/"
         },
         {
             name: "slicer/0.3.0",
@@ -363,7 +363,7 @@ task adapterTrimming {
     input {
         File fastqR1
         File? fastqR2
-        String modules = "cutadapt/1.8.3"
+        String modules = "cutadapt/2.1"
         Boolean doUMItrim = false
         Int umiLength = 5
         Int trimMinLength = 1
@@ -372,7 +372,9 @@ task adapterTrimming {
         String adapter2 = "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT" 
         String? addParam
         Int jobMemory = 16
-        Int timeout = 48  
+        Int timeout = 48
+        Int? polyGTrim
+        Boolean adapterTrim = true  
     }
     
     parameter_meta {
@@ -388,6 +390,8 @@ task adapterTrimming {
         addParam: "Additional cutadapt parameters"
         jobMemory: "Memory allocated for this job"
         timeout: "Hours before task timeout"
+        polyGTrim: "Number to pass to --nexseq-trim. Will address polyG trimming"
+        adapterTrim: "If false, will not preform adapter trimming"
     }
    
     Array[File] inputs = select_all([fastqR1,fastqR2])
@@ -400,10 +404,11 @@ task adapterTrimming {
 
         cutadapt -q ~{trimMinQuality} \
                 -m ~{trimMinLength} \
-                -a ~{adapter1} \
+                ~{if (adapterTrim) then "-a ~{adapter1} " else "" } \
                 -o ~{resultFastqR1} \
-                ~{if (defined(fastqR2)) then "-A ~{adapter2} -p ~{resultFastqR2} " else ""} \
+                ~{if (defined(fastqR2)) then (if (adapterTrim) then "-A ~{adapter2} -p ~{resultFastqR2} " else "-p ~{resultFastqR2} ")  else ""} \
                 ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
+                ~{if (defined(polyGTrim)) then "--nextseq-trim=~{polyGTrim} " else ""} \
                 ~{addParam} \
                 ~{fastqR1} \
                 ~{fastqR2} > ~{resultLog}
@@ -688,4 +693,3 @@ task adapterTrimmingLog {
 
 }
  
-
