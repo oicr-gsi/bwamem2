@@ -33,7 +33,6 @@ workflow bwamem2 {
     "hg38": "$HG38_BWAMEM2_INDEX_NOALT_ROOT/hg38_noAlt.fa",
     }
 
-
     String bwamem2_modules = bwamem2_modules_by_genome [ reference ]
     String bwamem2_ref = bwamem2Ref_by_genome [ reference ]
 
