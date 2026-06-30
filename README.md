@@ -75,6 +75,8 @@ Parameter|Value|Default|Description
 `adapterTrimming.addParam`|String?|None|Additional cutadapt parameters
 `adapterTrimming.jobMemory`|Int|16|Memory allocated for this job
 `adapterTrimming.timeout`|Int|48|Hours before task timeout
+`adapterTrimming.polyGTrim`|Int?||Number to pass to --nexseq-trim
+`adapterTrimming.adapterTrim`|Boolean|true|If false, will not preform adapter trimming
 `runBwamem2.addParam`|String?|None|Additional BWA parameters
 `runBwamem2.threads`|Int|8|Requested CPU threads
 `runBwamem2.jobMemory`|Int|32|Memory allocated for this job
@@ -136,15 +138,16 @@ If requested, subsequent steps will be run on each fastq chunk
 ### Trim off adapter sequence (optional)
  
 ```
- cutadapt -q ~{trimMinQuality} \
-	 -m ~{trimMinLength} \
-	 -a ~{adapter1} \
-	 -o ~{resultFastqR1} \
-	 ~{if (defined(fastqR2)) then "-A ~{adapter2} -p ~{resultFastqR2} " else ""} \
-	 ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
-	 ~{addParam} \
-	 ~{fastqR1} \
-	 ~{fastqR2} > ~{resultLog}
+    cutadapt -q ~{trimMinQuality} \
+        -m ~{trimMinLength} \
+        ~{if (adapterTrim) then "-a ~{adapter1} " else "" } \
+        -o ~{resultFastqR1} \
+        ~{if (defined(fastqR2)) then (if (adapterTrim) then "-A ~{adapter2} -p ~{resultFastqR2} " else "-p ~{resultFastqR2} ")  else ""} \
+        ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
+        ~{if (defined(polyGTrim)) then "--nextseq-trim=~{polyGTrim} " else ""} \
+        ~{addParam} \
+        ~{fastqR1} \
+        ~{fastqR2} > ~{resultLog}
 
 ```
  
