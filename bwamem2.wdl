@@ -376,7 +376,9 @@ task adapterTrimming {
         String adapter2 = "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT" 
         String? addParam
         Int jobMemory = 16
-        Int timeout = 48  
+        Int timeout = 48
+        Int? polyGTrim
+        Boolean adapterTrim = true  
     }
     
     parameter_meta {
@@ -392,6 +394,8 @@ task adapterTrimming {
         addParam: "Additional cutadapt parameters"
         jobMemory: "Memory allocated for this job"
         timeout: "Hours before task timeout"
+        polyGTrim: "Number to pass to --nexseq-trim. Will address polyG trimming"
+        adapterTrim: "If false, will not preform adapter trimming"
     }
    
     Array[File] inputs = select_all([fastqR1,fastqR2])
@@ -404,13 +408,15 @@ task adapterTrimming {
 
         cutadapt -q ~{trimMinQuality} \
                 -m ~{trimMinLength} \
-                -a ~{adapter1} \
+                ~{if (adapterTrim) then "-a ~{adapter1} " else "" } \
                 -o ~{resultFastqR1} \
-                ~{if (defined(fastqR2)) then "-A ~{adapter2} -p ~{resultFastqR2} " else ""} \
+                ~{if (defined(fastqR2)) then (if (adapterTrim) then "-A ~{adapter2} -p ~{resultFastqR2} " else "-p ~{resultFastqR2} ")  else ""} \
                 ~{if (doUMItrim) then "-u ~{umiLength} -U ~{umiLength} " else ""} \
+                ~{if (defined(polyGTrim)) then "--nextseq-trim=~{polyGTrim} " else ""} \
                 ~{addParam} \
                 ~{fastqR1} \
                 ~{fastqR2} > ~{resultLog}
+
 
     >>>
     
