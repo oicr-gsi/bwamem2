@@ -1461,7 +1461,7 @@
             {
                 "metrics_calculate": "@CHECKOUT@/tests/calculate.sh",
                 "metrics_compare": "@CHECKOUT@/tests/compare.sh",
-                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.1.0/output_metrics/polyG_test.metrics",
+                "output_metrics": "/.mounts/labs/gsi/testdata/bwamem2/1.1.2/output_metrics/polyG_test.metrics",
                 "type": "script"
             }
         ]
