@@ -142,8 +142,8 @@ workflow bwamem2 {
             url: "https://github.com/samtools/samtools/archive/0.1.19.tar.gz"
         },
         {
-            name: "cutadapt/1.8.3",
-            url: "https://cutadapt.readthedocs.io/en/v1.8.3/"
+            name: "cutadapt/2.1",
+            url: "https://cutadapt.readthedocs.io/en/v2.1/"
         },
         {
             name: "slicer/0.3.0",
@@ -367,7 +367,7 @@ task adapterTrimming {
     input {
         File fastqR1
         File? fastqR2
-        String modules = "cutadapt/1.8.3"
+        String modules = "cutadapt/2.1"
         Boolean doUMItrim = false
         Int umiLength = 5
         Int trimMinLength = 1

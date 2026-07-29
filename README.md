@@ -8,7 +8,7 @@ This workflow aligns sequence data provided as fastq files against a genomic ref
 
 * [bwa-mem2 2.2.1](https://github.com/bwa-mem2/bwa-mem2/releases/download/v2.2.1/bwa-mem2-2.2.1_x64-linux.tar.bz2)
 * [samtools 1.9](https://github.com/samtools/samtools/archive/0.1.19.tar.gz)
-* [cutadapt 1.8.3](https://cutadapt.readthedocs.io/en/v1.8.3/)
+* [cutadapt 2.1](https://cutadapt.readthedocs.io/en/v2.1/)
 * [slicer 0.3.0](https://github.com/OpenGene/slicer/archive/v0.3.0.tar.gz)
 * [python 3.7](https://www.python.org)
 * [barcodex-rs 0.1.2](https://github.com/oicr-gsi/barcodex-rs/archive/v0.1.2.tar.gz)
